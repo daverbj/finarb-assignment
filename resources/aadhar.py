@@ -54,6 +54,7 @@ class AadharResource(Resource):
             try:
                 db.session.commit()
             except Exception as e:
+                print(e)
                 db.session.rollback()
                 db.session.flush() 
                 return { "status": 'fail' }, 400

@@ -27,11 +27,14 @@ class UserResource(Resource):
         db.session.add(user)
         try:
             db.session.commit()
+            db.session.flush()
         except Exception as e:
+            print(e)
             db.session.rollback()
             db.session.flush() 
             return { "status": 'fail' }, 400
         result = user_schema.dump(user).data  
+        
         return { "status": 'success', 'data': result }, 200
 
             

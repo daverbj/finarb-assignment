@@ -19,6 +19,7 @@ class AuthenticationResource(Resource):
         refresh_token = create_refresh_token(identity=current_user.id)
         return {
             'message': 'Logged in as {}'.format(current_user.name),
+            'user_id': current_user.id,
             'access_token': access_token,
             'refresh_token': refresh_token
         }, 200

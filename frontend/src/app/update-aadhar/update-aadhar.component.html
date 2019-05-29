@@ -1,0 +1,5 @@
+<form (submit)="onSubmit()">
+  <p *ngIf="!isAadharAvailable">No Aadhar found. Please update</p>
+  <input type="text" name="aadhar" [(ngModel)]="aadharNumber" />
+  <button type="submit">Update</button>
+</form>
