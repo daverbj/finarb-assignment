@@ -21,7 +21,9 @@ class UserResource(Resource):
         json_data = request.get_json(force=True)
         if not json_data:
             return {'message': 'No input data provided'}, 400
-        user = User(name=json_data['username'])
+        if User.query.filter_by(name=json_data['username']).first():
+          return {'message': 'User {} already exists'. format(json_data['username'])}, 400
+        user = User(name=json_data['username'], password=json_data['password'])
         db.session.add(user)
         try:
             db.session.commit()
