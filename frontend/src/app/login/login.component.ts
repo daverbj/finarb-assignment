@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
   constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user_id');
   }
 
   onSubmit(){
@@ -23,10 +25,10 @@ export class LoginComponent implements OnInit {
         (response)=>{
           console.log('login response', response);
           if(response.status == 200) {
-            localStorage.setItem('token', response.body.access_token)
-            localStorage.setItem('user_id', response.body.user_id)
+            localStorage.setItem('token', response.body['access_token'])
+            localStorage.setItem('user_id', response.body['user_id'])
             //navgate to user page
-            this.router.navigate([`/update/${response.body.user_id}`]);
+            this.router.navigate([`/update/${response.body['user_id']}`]);
           }
         },
         (error)=>{

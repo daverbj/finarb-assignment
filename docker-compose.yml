@@ -1,0 +1,14 @@
+# Use docker-compose syntax Version 2
+version: "2"
+services:
+  # Our main "nodeapp" service which has the express aplication inside
+  backend:
+    build: .
+    restart: always
+    ports:
+      - "5000:5000"
+  frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - "8000:80"

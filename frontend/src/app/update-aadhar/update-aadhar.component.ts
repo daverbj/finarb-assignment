@@ -1,6 +1,6 @@
 import { ApiService } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-aadhar',
@@ -11,16 +11,17 @@ export class UpdateAadharComponent implements OnInit {
   id
   isAadharAvailable = false
   aadharNumber = ''
-  constructor(private api:ApiService, private route: ActivatedRoute ) { }
+  constructor(private api:ApiService, private route: ActivatedRoute, private router: Router ) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("id")
+    
     this.api.getAadhar(this.id)
       .subscribe(
         (response) => {
           console.log('get aadhar response', response)
           this.isAadharAvailable = true;
-          this.aadharNumber = response.data.aadharNumber
+          this.aadharNumber = response['data']['aadharNumber']
         },
         (error) => {
           console.log('get aadhar error', error)
@@ -29,6 +30,10 @@ export class UpdateAadharComponent implements OnInit {
           }
           if (error.status == 404) {
             this.isAadharAvailable = false;
+          }
+          if (error.status == 422){
+            alert("Unauthorized access")
+            this.router.navigate(['/login']);
           }
         },
         () => {
@@ -44,6 +49,10 @@ export class UpdateAadharComponent implements OnInit {
         },
         (error) => {
           console.log('add aadhar error', error)
+          if (error.status == 401 || error.status == 403){
+            alert("Unauthorized access")
+          }
+          
         },
         () => {
 
@@ -56,6 +65,9 @@ export class UpdateAadharComponent implements OnInit {
         },
         (error) => {
           console.log('add aadhar error', error)
+          if (error.status == 401 || error.status == 403){
+            alert("Unauthorized access")
+          }
         },
         () => {
 

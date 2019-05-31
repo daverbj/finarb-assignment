@@ -1,4 +1,7 @@
-<mat-toolbar>Aadhar Update</mat-toolbar>
+<mat-toolbar>
+    Aadhar Update
+    <a *ngIf="token" [routerLink]="['/login']"><button class="btn btn-link">Log Out</button></a>
+</mat-toolbar>
 <div class="container">
     <router-outlet></router-outlet>
 </div>
