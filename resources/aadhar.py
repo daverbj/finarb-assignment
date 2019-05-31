@@ -5,6 +5,7 @@ from models import db
 from models.aadhar import Aadhar, AadharSchema
 from models.user import User, UserSchema
 aadharSchema = AadharSchema()
+aadharsSchema = AadharSchema(many=True)
 class AadharResource(Resource):
     @jwt_required
     def get(self, id):
@@ -62,3 +63,10 @@ class AadharResource(Resource):
             return {"message": "aadhar updated", "data":result}, 200
         else:
             return {"message": "user not found"}, 404
+
+
+class AadharListResource(Resource):
+    def get(self):
+        aadhars  = Aadhar.query.all()
+        aadhars = aadharsSchema.dump(aadhars).data
+        return {'status': 'success', 'data': aadhars}, 200
