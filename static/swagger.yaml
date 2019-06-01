@@ -1,0 +1,119 @@
+swagger: "2.0"
+info:
+  description: "This is an assingment given by Finarb consulting to show demo of coding skill"
+  version: "1.0.0"
+  title: "Finarb Assignment"
+  contact:
+    email: "apiteam@swagger.io"
+host: "localhost:5000"
+basePath: "/api"
+tags:
+- name: "User"
+  description: "User related end points"
+- name: "Aadhar"
+  description: "Aadhar related end points"
+schemes:
+- "http"
+paths:
+  /users:
+    get:
+      tags:
+      - "User"
+      summary: "Get All users along with their aadhar details"
+      operationId: "listUser"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        404:
+          description: "Not Found"
+        200:
+          description: "OK"
+    post:
+      tags:
+        - "User"
+      summary: "Register for user"
+      operationId: "registerUser"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        400:
+          description: "Bad input or user already exists"
+        200:
+          description: "OK"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Use object that needs to be registered"
+          required: true
+          schema:
+            $ref: "#/definitions/User"
+  /login:
+    post:
+      tags:
+      - "User"
+      summary: "Login to get JWT token"
+      operationId: "login"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        404:
+          description: "Not Found"
+        200:
+          description: "OK"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Use object that needs to be registered"
+          required: true
+          schema:
+            $ref: "#/definitions/User"
+  /aadhar/user/{id}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - "Aadhar"
+      summary: "Get aadhar details for perticular user"
+      operationId: "getAadhar"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        404:
+          description: "Not Found"
+        200:
+          description: "OK"
+        403:
+          description: "Unauthorized access"
+        401:
+          description: "Unauthorized access"
+        422:
+          description: "Unprocessable header"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of the authrenticated user"
+          required: true
+          type: "string"      
+definitions:
+  User:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      password:
+        type: "string"
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+        
+      
