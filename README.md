@@ -1,6 +1,4 @@
-# finarb-assignment
-
-#Instruction to run this project
+# Instruction to run this project
 
 ## Using Docker
 git clone https://github.com/daveai/finarb-assignment.git
