@@ -2,13 +2,16 @@
 
 #Instruction to run this project
 
-# Using Docker
-git clone https://github.com/daveai/finarb-assignment.git
-## install docker and docker-compose and run following command
-docker-compose up -d
+## Using Docker
+```git clone https://github.com/daveai/finarb-assignment.git
+install docker and docker-compose and run following command
+```docker-compose up -d
+Test with swagger UI
+```http://localhost:5000/docs
 
 
 
+# Using manual setup
 ## clone the repo
 git clone https://github.com/daveai/finarb-assignment.git
 
