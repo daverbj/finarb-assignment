@@ -7,7 +7,9 @@ git clone https://github.com/daveai/finarb-assignment.git
 <b>install docker and docker-compose and run following command</b>
 
 docker-compose up -d
-Test with swagger UI
+
+<b>Test with swagger UI</b>
+
 http://localhost:5000/docs
 
 
