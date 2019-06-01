@@ -16,6 +16,8 @@ flask-script = "*"
 flask-migrate = "*"
 flask-jwt-extended = "*"
 flask-cors = "*"
+flask-restplus = "*"
+flask-swagger-ui = "*"
 
 [requires]
 python_version = "3.6"
