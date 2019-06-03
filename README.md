@@ -6,6 +6,10 @@ git clone https://github.com/daveai/finarb-assignment.git
 
 <b>install docker and docker-compose and run following command</b>
 
+<b> Make sure you have docker as normal user permission</b>
+
+sudo usermod -a -G docker $USER
+
 docker-compose up -d
 
 <b>Test with swagger UI</b>
@@ -13,6 +17,7 @@ docker-compose up -d
 http://localhost:5000/docs
 
 <b>Front end URL </b>
+
 http://localhost:8000/login
 
 
