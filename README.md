@@ -12,6 +12,9 @@ docker-compose up -d
 
 http://localhost:5000/docs
 
+<b>Front end URL </b>
+http://localhost:4200/login
+
 
 
 # Using manual setup
