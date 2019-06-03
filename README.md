@@ -13,7 +13,7 @@ docker-compose up -d
 http://localhost:5000/docs
 
 <b>Front end URL </b>
-http://localhost:4200/login
+http://localhost:8000/login
 
 
 
